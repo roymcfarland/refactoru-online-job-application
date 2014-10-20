@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -20,7 +21,9 @@ app.get('/applicants', function(req, res){
 app.post('/applicant', function(req, res){
 	// Here is where you need to get the data
 	// from the post body and store it in the database
-	res.send('No funciona');
+	// res.send('Success!');
+	// console.log(req.body);
+	res.render('success')
 });
 
 var server = app.listen(8441, function() {
