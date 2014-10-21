@@ -5,3 +5,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.applicantInfo {
+	list-style: none;
+	color: #777;
+}

@@ -4,4 +4,18 @@ block content
 	.container
 		h1 Applicants
 		ul#applications.list-unstyled
-			li Applicants should go here.
+
+		for applicant in applicants
+				//- Print an LI for each applicant
+				li.applicantInfo
+					h3= applicant.name
+				li.applicantInfo
+					h5= applicant.bio
+				li.applicantInfo
+					h5= applicant.skills
+				li.applicantInfo
+					h5= applicant.years
+				li.applicantInfo
+					h5= applicant.why
+	.container
+		a.btn.btn-primary(href='/') Go Back

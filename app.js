@@ -1,6 +1,14 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
+// Require the mongoose module
 var mongoose = require('mongoose');
+
+// Controller
+var indexController = require('./controllers/index.js');
+
+// Connect to the MongoDB
+mongoose.connect('mongodb://localhost/omega3studios');
 
 var app = express();
 app.set('view engine', 'jade');
@@ -8,23 +16,14 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser());
 
-app.get('/', function(req, res) {
-	res.render('index');
-});
+// Displays the homepage
+app.get('/', indexController.index);
 
-// displays a list of applicants
-app.get('/applicants', function(req, res){
-	res.render('applicants')
-});
+// Displays a list of applicants
+app.get('/applicants', indexController.applicants);
 
-// creates and applicant
-app.post('/applicant', function(req, res){
-	// Here is where you need to get the data
-	// from the post body and store it in the database
-	// res.send('Success!');
-	// console.log(req.body);
-	res.render('success')
-});
+// Creates an applicant
+app.post('/postIt', indexController.postIt);
 
 var server = app.listen(8441, function() {
 	console.log('Express server listening on port ' + server.address().port);
